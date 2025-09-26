@@ -10,6 +10,7 @@
 
 #include <TimerPlatform.hpp>
 
+namespace SK {
 
 class TimerInterval {
 public:
@@ -88,6 +89,8 @@ private:
     Tick_t oneShot;
     Tick_t starts;
 };
+
+}
 
 
 
