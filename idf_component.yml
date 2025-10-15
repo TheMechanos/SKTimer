@@ -1,0 +1,7 @@
+version: 1.0.0
+maintainers:
+  - Sebastian Koczur <themechanos@gmail.com>
+description: >-
+  Timer and Tick component
+
+repository: "https://github.com/TheMechanos/SKTimer.git"
