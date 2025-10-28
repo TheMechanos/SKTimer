@@ -59,9 +59,14 @@ public:
     uint8_t getRemainingPercent() { return getRemaining() * 100 / oneShot; }
 
 
+    void reset() { starts = NOT_SET; }
     void start() {
         if (starts == NOT_SET)
             starts = getTick();
+    }
+    void restart() {
+        reset();
+        start();
     }
 
     bool is(bool returnOnceTime = false) {
