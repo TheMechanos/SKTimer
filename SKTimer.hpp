@@ -44,7 +44,8 @@ class TimerOneShot {
 public:
     TimerOneShot(Tick_t oneShot, bool start = false)
         : oneShot(oneShot)
-        , starts(NOT_SET) {
+        , starts(NOT_SET)
+        , returned(false) {
         if (start)
             this->start();
     }
@@ -59,7 +60,10 @@ public:
     uint8_t getRemainingPercent() { return getRemaining() * 100 / oneShot; }
 
 
-    void reset() { starts = NOT_SET; }
+    void reset() {
+        starts = NOT_SET;
+        returned = false;
+    }
     void start() {
         if (starts == NOT_SET)
             starts = getTick();
@@ -74,7 +78,6 @@ public:
         if (starts != NOT_SET && getTick() > starts + oneShot) {
 
             if (returnOnceTime) {
-                static bool returned = false;
                 if (returned)
                     return false;
                 else {
@@ -93,6 +96,7 @@ private:
     constexpr static const Tick_t NOT_SET = -1;
     Tick_t oneShot;
     Tick_t starts;
+    bool returned;
 };
 
 }
