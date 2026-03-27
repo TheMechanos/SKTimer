@@ -24,6 +24,8 @@ public:
 
     void reset() { lastInterval = getTick(); }
 
+    operator bool() { return is(); }
+    
     bool is() {
         if (getTick() - lastInterval > interval) {
             lastInterval = getTick();
@@ -72,7 +74,9 @@ public:
         start();
     }
 
-    bool is(bool returnOnceTime = false) {
+    operator bool() { return is(); }
+
+    bool is(bool returnOnceTime = true) {
 
         if (starts != NOT_SET && getTick() > starts + oneShot) {
 
